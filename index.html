@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Grades</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <h2>Submit Student Grades</h2>
+    <form action="/upload" method="POST">
+        <label> Student Name:
+            <input type="text" name="student_name" required/>
+        </label>
+        <label> Student Grade:
+            <input type="text" name="student_grade" required/>
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <h2>Triton Grades</h2>
+    <ul>
+        {{range .}}
+        <li>
+            <a href="/student?id={{.Name}}">{{.Name}}</a>
+        </li>
+        {{else}}
+        <li>No grades to display.</li>
+        {{end}}
+    </ul>
+</body>
+</html>
