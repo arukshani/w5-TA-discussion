@@ -51,7 +51,7 @@ func handleStudentInfo(tmpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		id := r.URL.Query().Get("id")
 		if id == "" {
-			http.Error(w, "Student name is missing!", http.StatusBadRequest)
+			http.Error(w, "Student record does not exist!", http.StatusBadRequest)
 			return
 		}
 
@@ -63,7 +63,6 @@ func handleStudentInfo(tmpl *template.Template) http.HandlerFunc {
 			}
 		} else {
 			http.Error(w, "Student record not found", http.StatusNotFound)
-			return
 		}
 	}
 }
